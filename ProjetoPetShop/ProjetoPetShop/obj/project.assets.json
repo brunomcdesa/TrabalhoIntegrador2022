@@ -6694,24 +6694,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jessi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Matheus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
+      "projectUniqueName": "C:\\Users\\Matheus\\Documents\\GitHub\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
       "projectName": "ProjetoPetShop",
-      "projectPath": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
-      "packagesPath": "C:\\Users\\jessi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\obj\\",
+      "projectPath": "C:\\Users\\Matheus\\Documents\\GitHub\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
+      "packagesPath": "C:\\Users\\Matheus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Matheus\\Documents\\GitHub\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jessi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Matheus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6783,7 +6778,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
