@@ -6694,24 +6694,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jessi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Source\\Repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
       "projectName": "ProjetoPetShop",
-      "projectPath": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
-      "packagesPath": "C:\\Users\\jessi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jessi\\source\\repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Source\\Repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\ProjetoPetShop.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Source\\Repos\\brunomcdesa\\TrabalhoIntegrador2022\\ProjetoPetShop\\ProjetoPetShop\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jessi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

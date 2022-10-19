@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\ProjetoPetShop",
-    "\\ProjetoPetShop\\ProjetoPetShop",
-    "\\ProjetoPetShop\\ProjetoPetShop\\Data"
+    "\\ProjetoPetShop\\ProjetoPetShop"
   ],
-  "SelectedNode": "\\ProjetoPetShop\\ProjetoPetShop\\Data\\PetContext.cs",
+  "SelectedNode": "\\ProjetoPetShop\\ProjetoPetShop.sln",
   "PreviewInSolutionExplorer": false
 }
