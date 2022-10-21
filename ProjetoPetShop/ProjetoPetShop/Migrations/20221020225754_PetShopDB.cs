@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace ProjetoPetShop.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class PetShopDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,12 +12,12 @@ namespace ProjetoPetShop.Migrations
                 name: "Clientes",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id_Cliente = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.ID);
+                    table.PrimaryKey("PK_Clientes", x => x.Id_Cliente);
                 });
 
             migrationBuilder.CreateTable(
