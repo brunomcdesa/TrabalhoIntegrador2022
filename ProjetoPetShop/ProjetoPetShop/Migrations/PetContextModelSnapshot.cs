@@ -19,11 +19,11 @@ namespace ProjetoPetShop.Migrations
 
             modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id_Cliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id_Cliente");
 
                     b.ToTable("Clientes");
                 });

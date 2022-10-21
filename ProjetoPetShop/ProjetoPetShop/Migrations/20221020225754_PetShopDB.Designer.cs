@@ -9,7 +9,7 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221020223840_PetShopDB")]
+    [Migration("20221020225754_PetShopDB")]
     partial class PetShopDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,11 +21,11 @@ namespace ProjetoPetShop.Migrations
 
             modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id_Cliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id_Cliente");
 
                     b.ToTable("Clientes");
                 });
