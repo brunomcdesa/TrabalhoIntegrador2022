@@ -1,3 +1,6 @@
+.vs/*
+*.vsidx
+*.vs\ProjetoPetShop\DesignTimeBuild\.dtbcache.v2
 
 .vs/*
 *.vsidx
