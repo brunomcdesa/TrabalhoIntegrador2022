@@ -23,27 +23,70 @@ namespace ProjetoPetShop.Controllers
             return _context.Pets;
         }
 
+
+        //GET
         [HttpGet("{id}")]
         public IActionResult BuscarPetPorId(int id) 
         {
-            Pet pet = _context.Pets.FirstOrDefault(pet => pet.Id_Pet == id);
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
             if (pet != null)
             {
                 return Ok(pet);
             }
-            return NotFound();        
+            return NotFound("Pet não encontrado!");        
         }
+
+        //Get por nome do pet
+        
+     //   [HttpGet("{nome}")]
+     //  public ActionResult BuscaPetPorNome(string nome) {
+
+     //      Pet pet = _context.Pets.FirstOrDefault(pet => pet.NomePet == nome);
+      //      if (pet == null)
+      //      {
+     //           return NotFound("Pet não encontrado!");
+      //      }
+
+      //      return Ok(pet);
+      //  }
 
 
 
 
         [HttpPost]
-        public IActionResult addPet ([FromBody] Pet pet)
+        public IActionResult addPet([FromBody] Pet pet)
         {
             _context.Pets.Add(pet);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.Id_Pet }, pet);
+            return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.IdPet }, pet);
+
         }
-        
+
+        [HttpDelete("{id}")]
+        public string RemovePetPorId(int id)
+        {
+                Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
+                if (pet != null)
+                {
+                    _context.Pets.Remove(pet);
+                    _context.SaveChanges();
+                    return "Pet excluido com sucesso!";
+                }
+                return "Pet não encontrado";
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult EditaPetPorId(int id)
+        {
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
+            if (pet != null)
+            {
+                _context.Pets.Update(pet);
+                _context.SaveChanges();
+                return Ok(pet);
+            }
+            return NotFound("Pet não encontrado!");
+        }
+
     }
 }

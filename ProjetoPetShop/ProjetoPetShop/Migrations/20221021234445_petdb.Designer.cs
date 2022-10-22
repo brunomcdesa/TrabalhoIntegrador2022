@@ -9,8 +9,8 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221020225754_PetShopDB")]
-    partial class PetShopDB
+    [Migration("20221021234445_petdb")]
+    partial class petdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,18 @@ namespace ProjetoPetShop.Migrations
 
             modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
                 {
-                    b.Property<int>("Id_Cliente")
+                    b.Property<int>("IdCliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("Id_Cliente");
+                    b.HasKey("IdCliente");
 
                     b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
                 {
-                    b.Property<int>("Id_Pet")
+                    b.Property<int>("IdPet")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -43,17 +43,17 @@ namespace ProjetoPetShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Id_Cliente")
+                    b.Property<int>("IdCliente")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Nascimento")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Nome_Pet")
+                    b.Property<string>("NomePet")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id_Pet");
+                    b.HasKey("IdPet");
 
                     b.ToTable("Pets");
                 });

@@ -141,3 +141,4 @@ C:\Users\autologon\Source\Repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetSho
 C:\Users\autologon\Source\Repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ref\ProjetoPetShop.dll
 C:\Users\autologon\Source\Repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ProjetoPetShop.pdb
 C:\Users\autologon\Source\Repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ProjetoPetShop.genruntimeconfig.cache
+C:\Users\Usuario\Source\Repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\bin\Debug\net5.0\ProjetoPetShop.StaticWebAssets.xml

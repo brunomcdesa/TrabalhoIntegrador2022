@@ -8,9 +8,9 @@ namespace ProjetoPetShop.Model
     public class Pet
     {
         [Key]
-        public int Id_Pet { get; set; }
+        public int IdPet { get; set; }
         [Required]
-        public string Nome_Pet { get; set; }
+        public string NomePet { get; set; }
         [Required]
         public DateTime Nascimento { get; set; }
         [Required]
@@ -18,7 +18,7 @@ namespace ProjetoPetShop.Model
         [Required]
         public string Especie { get; set; }
         [ForeignKey("Cliente")]
-        public int Id_Cliente { get; set; }
+        public int IdCliente { get; set; }
 
     }
 }
