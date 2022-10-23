@@ -3,7 +3,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace ProjetoPetShop.Migrations
 {
-    public partial class PetDb : Migration
+    public partial class Cliente : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
