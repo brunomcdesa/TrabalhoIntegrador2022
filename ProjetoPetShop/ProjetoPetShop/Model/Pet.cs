@@ -17,8 +17,11 @@ namespace ProjetoPetShop.Model
         public Boolean Deficiencia { get; set; }
         [Required]
         public string Especie { get; set; }
-        [ForeignKey("Cliente")]
-        public int IdCliente { get; set; }
+
+       // [ForeignKey("Cliente")]
+       // public int IdCliente { get; set; }
+        public Cliente cliente { get; set; }
+
 
     }
 }

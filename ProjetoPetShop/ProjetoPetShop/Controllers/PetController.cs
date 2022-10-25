@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjetoPetShop.Data;
 using ProjetoPetShop.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjetoPetShop.Controllers
 {
@@ -29,11 +31,13 @@ namespace ProjetoPetShop.Controllers
         public IActionResult BuscarPetPorId(int id) 
         {
             Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
-            if (pet != null)
+            if (pet == null)
             {
-                return Ok(pet);
+                return NotFound("Pet não encontrado!");
             }
-            return NotFound("Pet não encontrado!");        
+               
+                    return Ok(pet.cliente.nomeCliente);
+                 
         }
 
         //Get por nome do pet
@@ -75,17 +79,33 @@ namespace ProjetoPetShop.Controllers
                 return "Pet não encontrado";
         }
 
+
         [HttpPut("{id}")]
-        public IActionResult EditaPetPorId(int id)
+        public async Task<IActionResult> EditaPetPorId(int id, [FromBody] Pet petN)
         {
-            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
-            if (pet != null)
+
+            if (id != petN.IdPet)
             {
-                _context.Pets.Update(pet);
-                _context.SaveChanges();
-                return Ok(pet);
+                return BadRequest();
             }
-            return NotFound("Pet não encontrado!");
+
+            _context.Entry(petN).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+            try { 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if(petN == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
         }
 
     }

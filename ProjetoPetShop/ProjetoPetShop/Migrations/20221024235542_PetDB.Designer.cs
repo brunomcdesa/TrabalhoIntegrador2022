@@ -9,8 +9,8 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221021234445_petdb")]
-    partial class petdb
+    [Migration("20221024235542_PetDB")]
+    partial class PetDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,10 @@ namespace ProjetoPetShop.Migrations
                     b.Property<int>("IdCliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("nomeCliente")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("IdCliente");
 
@@ -43,9 +47,6 @@ namespace ProjetoPetShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Nascimento")
                         .HasColumnType("datetime");
 
@@ -53,9 +54,23 @@ namespace ProjetoPetShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("clienteIdCliente")
+                        .HasColumnType("int");
+
                     b.HasKey("IdPet");
 
+                    b.HasIndex("clienteIdCliente");
+
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
+                {
+                    b.HasOne("ProjetoPetShop.Model.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("clienteIdCliente");
+
+                    b.Navigation("cliente");
                 });
 #pragma warning restore 612, 618
         }
