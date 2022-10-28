@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjetoPetShop.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Cliente = ProjetoPetShop.Model.Cliente;
 
 namespace ProjetoPetShop.Controllers
@@ -58,17 +60,33 @@ namespace ProjetoPetShop.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditaClientePorId(int id)
+        public async Task<IActionResult> EditaClientePorId(int id, [FromBody] Cliente clienteN)
         {
-            Cliente cliente = _context.Cliente.FirstOrDefault(cliente => cliente.IdCliente == id);
-            if (cliente != null)
+            if (id != clienteN.IdCliente)
             {
-                _context.Cliente.Update(cliente);
-                _context.SaveChanges();
-                return Ok(cliente);
+                return BadRequest("Id deve ser igual!");
             }
-            return NotFound("Cliente não encoontrado");
+
+            _context.Entry(clienteN).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (clienteN == null)
+                {
+                    return NotFound("Id não encontrado!");
                 }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
     }
 }
 
