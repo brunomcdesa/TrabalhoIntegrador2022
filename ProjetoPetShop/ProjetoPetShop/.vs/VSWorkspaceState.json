@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers",
+    "\\Data",
+    "\\Model"
   ],
-  "SelectedNode": "\\obj",
+  "SelectedNode": "\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

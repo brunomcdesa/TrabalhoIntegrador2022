@@ -8,7 +8,7 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221021235334_Cliente")]
+    [Migration("20221026030422_Cliente")]
     partial class Cliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,7 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdCliente");
 
-                    b.ToTable("clientes");
+                    b.ToTable("Cliente");
                 });
 #pragma warning restore 612, 618
         }

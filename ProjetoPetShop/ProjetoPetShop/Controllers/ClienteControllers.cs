@@ -18,13 +18,13 @@ namespace ProjetoPetShop.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<PetContext> PetContexts()
+        public IEnumerable<Cliente> PetContexts()
         {
-            return (IEnumerable<PetContext>)_context.Cliente;
+            return _context.Cliente;
         }
 
 
-        [HttpGet("[id]")]
+        [HttpGet("{id}")]
             public IActionResult GetClienteById(int id)
             {
                 Cliente cliente = _context.Cliente.FirstOrDefault(cliente => cliente.IdCliente == id);

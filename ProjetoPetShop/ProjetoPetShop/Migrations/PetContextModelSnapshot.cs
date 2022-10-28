@@ -40,7 +40,7 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdCliente");
 
-                    b.ToTable("clientes");
+                    b.ToTable("Cliente");
                 });
 #pragma warning restore 612, 618
         }

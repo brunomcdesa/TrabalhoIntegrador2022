@@ -8,7 +8,7 @@ namespace ProjetoPetShop.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "clientes",
+                name: "Cliente",
                 columns: table => new
                 {
                     IdCliente = table.Column<int>(type: "int", nullable: false)
@@ -20,14 +20,14 @@ namespace ProjetoPetShop.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_clientes", x => x.IdCliente);
+                    table.PrimaryKey("PK_Cliente", x => x.IdCliente);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "clientes");
+                name: "Cliente");
         }
     }
 }

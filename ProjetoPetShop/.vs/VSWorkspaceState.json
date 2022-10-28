@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ProjetoPetShop",
+    "\\ProjetoPetShop\\Controllers",
+    "\\ProjetoPetShop\\Model"
   ],
-  "SelectedNode": "\\ProjetoPetShop.sln",
+  "SelectedNode": "\\ProjetoPetShop\\Controllers\\ClienteControllers.cs",
   "PreviewInSolutionExplorer": false
 }
