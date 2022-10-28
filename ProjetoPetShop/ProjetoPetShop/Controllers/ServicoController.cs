@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjetoPetShop.Data;
 using ProjetoPetShop.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjetoPetShop.Controllers
 {
@@ -49,20 +51,32 @@ namespace ProjetoPetShop.Controllers
                 _petContext.SaveChanges();
             }
         }
-        [HttpPut("{Id}")]
-        public IActionResult EditarPedidoPorId (int Id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarPedidoPorId (int id, [FromBody]Servico editServico)
         {
-
-            var servico = _petContext.Servicos.FirstOrDefault (servico => servico.IdServico == Id);
                            
-            if (servico != null)
+            if (id != editServico.IdServico)
             {
-                _petContext.Update(servico);
-                _petContext.SaveChanges();
-                return Ok(servico);
+                return BadRequest("Id deve ser igual!"); 
             }
-            return NotFound("Serviço não encontrado");
-            
+            _petContext.Entry(editServico).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            try
+            {
+                await _petContext.SaveChangesAsync();
+            }   
+            catch (DbUpdateConcurrencyException)
+            {
+                if(editServico == null)
+                {
+                    return NotFound("Id não encontrado");
+                }
+                else
+                {
+                    throw;
+                }
+
+            }
+            return NoContent();
         }
        
 

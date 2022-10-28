@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
-
+using System;
 namespace ProjetoPetShop.Migrations
 {
     public partial class petDb : Migration

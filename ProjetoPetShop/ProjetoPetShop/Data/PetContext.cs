@@ -6,9 +6,10 @@ namespace ProjetoPetShop.Data
     public class PetContext : DbContext
     {
         public DbSet<Servico> Servicos { get; set; }
-        public PetContext(DbContextOptions<PetContext> opt) : base(opt)
+        public PetContext(DbContextOptions<PetContext> opt) : base(opt) 
         {
 
         }
+       
     }
 }
