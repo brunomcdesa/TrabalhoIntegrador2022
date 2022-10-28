@@ -40,22 +40,6 @@ namespace ProjetoPetShop.Controllers
                  
         }
 
-        //Get por nome do pet
-        
-     //   [HttpGet("{nome}")]
-     //  public ActionResult BuscaPetPorNome(string nome) {
-
-     //      Pet pet = _context.Pets.FirstOrDefault(pet => pet.NomePet == nome);
-      //      if (pet == null)
-      //      {
-     //           return NotFound("Pet não encontrado!");
-      //      }
-
-      //      return Ok(pet);
-      //  }
-
-
-
 
         [HttpPost]
         public IActionResult addPet([FromBody] Pet pet)
@@ -86,7 +70,7 @@ namespace ProjetoPetShop.Controllers
 
             if (id != petN.IdPet)
             {
-                return BadRequest();
+                return BadRequest("O ID deve ser igual!");
             }
 
             _context.Entry(petN).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
@@ -98,7 +82,7 @@ namespace ProjetoPetShop.Controllers
             {
                 if(petN == null)
                 {
-                    return NotFound();
+                    return NotFound("Id não encontrado!");
                 }
                 else
                 {
