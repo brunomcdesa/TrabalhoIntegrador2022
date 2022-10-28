@@ -36,7 +36,7 @@ namespace ProjetoPetShop.Controllers
                 return NotFound("Pet não encontrado!");
             }
                
-                    return Ok(pet.cliente.nomeCliente);
+                    return Ok(pet);
                  
         }
 
