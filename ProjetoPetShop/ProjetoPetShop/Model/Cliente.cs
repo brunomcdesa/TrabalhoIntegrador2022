@@ -9,6 +9,8 @@ namespace ProjetoPetShop.Model
     public class Cliente
     {
         [Key]
-        public int Id_Cliente { get; set; }
+        public int IdCliente { get; set; }
+        [Required]
+        public string nomeCliente { get; set; }
     }
 }

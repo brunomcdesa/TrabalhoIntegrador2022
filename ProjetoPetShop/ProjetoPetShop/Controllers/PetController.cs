@@ -26,7 +26,7 @@ namespace ProjetoPetShop.Controllers
         [HttpGet("{id}")]
         public IActionResult BuscarPetPorId(int id) 
         {
-            Pet pet = _context.Pets.FirstOrDefault(pet => pet.Id_Pet == id);
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
             if (pet != null)
             {
                 return Ok(pet);
@@ -42,7 +42,7 @@ namespace ProjetoPetShop.Controllers
         {
             _context.Pets.Add(pet);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.Id_Pet }, pet);
+            return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.IdPet }, pet);
         }
         
     }

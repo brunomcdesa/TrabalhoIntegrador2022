@@ -1,24 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Text.Json.Serialization;
 
 namespace ProjetoPetShop.Model
 {
     public class Pet
     {
         [Key]
-        public int Id_Pet { get; set; }
+        public int IdPet { get; set; }
         [Required]
-        public string Nome_Pet { get; set; }
+        public string NomePet { get; set; }
         [Required]
         public DateTime Nascimento { get; set; }
         [Required]
         public Boolean Deficiencia { get; set; }
         [Required]
         public string Especie { get; set; }
-        [ForeignKey("Cliente")]
-        public int Id_Cliente { get; set; }
+
+
+        [JsonIgnore]
+        public virtual Agendamento Agendamentos { get; set; }
+       
+        public int IdCliente { get; set; }
+        //   public List<Agendamento> Agendamentos { get; set; }
+
 
     }
 }
