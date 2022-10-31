@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace ProjetoPetShop.Migrations
 {
-    public partial class pet : Migration
+    public partial class petShop : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,23 +45,24 @@ namespace ProjetoPetShop.Migrations
                     IdAgendamento = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(type: "datetime", nullable: false),
-                    IdPet = table.Column<int>(type: "int", nullable: false)
+                    IdPet = table.Column<int>(type: "int", nullable: false),
+                    PetIdPet = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Agendamentos", x => x.IdAgendamento);
                     table.ForeignKey(
-                        name: "ForeignKey_Agendamento_Pet",
-                        column: x => x.IdPet,
+                        name: "FK_Agendamentos_Pets_PetIdPet",
+                        column: x => x.PetIdPet,
                         principalTable: "Pets",
                         principalColumn: "IdPet",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agendamentos_IdPet",
+                name: "IX_Agendamentos_PetIdPet",
                 table: "Agendamentos",
-                column: "IdPet");
+                column: "PetIdPet");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

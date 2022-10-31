@@ -29,9 +29,12 @@ namespace ProjetoPetShop.Migrations
                     b.Property<int>("IdPet")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PetIdPet")
+                        .HasColumnType("int");
+
                     b.HasKey("IdAgendamento");
 
-                    b.HasIndex("IdPet");
+                    b.HasIndex("PetIdPet");
 
                     b.ToTable("Agendamentos");
                 });
@@ -83,10 +86,7 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.HasOne("ProjetoPetShop.Model.Pet", "Pet")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("IdPet")
-                        .HasConstraintName("ForeignKey_Agendamento_Pet")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PetIdPet");
 
                     b.Navigation("Pet");
                 });

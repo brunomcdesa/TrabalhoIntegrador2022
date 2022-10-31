@@ -22,7 +22,7 @@ namespace ProjetoPetShop.Model
 
 
         [JsonIgnore]
-        public virtual Agendamento Agendamentos { get; set; }
+        public virtual List<Agendamento> Agendamentos { get; set; }
        
         public int IdCliente { get; set; }
         //   public List<Agendamento> Agendamentos { get; set; }

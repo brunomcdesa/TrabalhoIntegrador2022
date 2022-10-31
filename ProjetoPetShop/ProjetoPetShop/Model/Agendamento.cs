@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ProjetoPetShop.Model
 {
@@ -14,6 +15,7 @@ namespace ProjetoPetShop.Model
        // [ForeignKey("Pet")]
         public int IdPet { get; set; }
         // um cara só para leituras colocar o virtual
+        [JsonIgnore]
         public virtual Pet Pet { get; set; }
         
 

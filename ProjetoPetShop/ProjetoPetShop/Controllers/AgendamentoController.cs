@@ -30,21 +30,31 @@ namespace ProjetoPetShop.Controllers
 
         [HttpGet]
         public IEnumerable<Agendamento> BuscarAgendamentos()
+
         {
             return _context.Agendamentos;
+
         }
 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
-            Agendamento agendamento = _context.Agendamentos.FirstOrDefault(agendamento => agendamento.IdAgendamento == id);
-            if (agendamento != null)
+            //Agendamento agendamento = _context.Agendamentos.FirstOrDefault(agendamento => agendamento.IdAgendamento == id );
+            
+            var query = _context.Agendamentos   
+            .Join(_context.Pets, 
+                agendamento => agendamento.IdPet,       
+                pet => pet.IdPet, 
+                (agendamento, pet) => new { Agendamento = agendamento, pet.NomePet, pet.Deficiencia})
+            .Where(agendamentoEPet => agendamentoEPet.Agendamento.IdAgendamento == id);    
+
+            if (query != null)
             {
-                return Ok(agendamento);
+
+                return Ok(query);
             }
             return NotFound("Não existe");
         }
-
 
         [HttpPut("{id}")]
         public async Task<IActionResult> EditaPetPorId(int id, [FromBody] Agendamento agendamento)

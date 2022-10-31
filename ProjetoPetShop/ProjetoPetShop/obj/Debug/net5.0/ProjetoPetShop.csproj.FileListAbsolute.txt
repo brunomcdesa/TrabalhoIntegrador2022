@@ -213,3 +213,5 @@ C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\Pr
 C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ProjetoPetShop.pdb
 C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ProjetoPetShop.genruntimeconfig.cache
 C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\obj\Debug\net5.0\ref\ProjetoPetShop.dll
+C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\jessi\source\repos\brunomcdesa\TrabalhoIntegrador2022\ProjetoPetShop\ProjetoPetShop\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -16,8 +16,8 @@ namespace ProjetoPetShop.Data
             modelBuilder.Entity<Agendamento>()
                 // aqui ta fazendo a relação só de um lado , onde tem 1 pet para 1 agendamento
                 .HasOne(p => p.Pet)
-                .WithOne(pet => pet.Agendamentos)
-                .HasForeignKey<Agendamento>(p => p.IdPet);
+                .WithMany(pet => pet.Agendamentos);
+                //.HasForeignKey<Agendamento>(p => p.IdPet);
                 // não precisa disso: .HasConstraintName("ForeignKey_Agendamento_Pet");
         }
         public DbSet<Pet> Pets { get; set; }
