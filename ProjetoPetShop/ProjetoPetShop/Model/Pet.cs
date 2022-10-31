@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
@@ -19,10 +20,12 @@ namespace ProjetoPetShop.Model
         [Required]
         public string Especie { get; set; }
 
-        // [ForeignKey("Cliente")]
-        // public int IdCliente { get; set; }
         [Required]
         public int IdCliente { get; set; }
+
+        [JsonIgnore]
+        public virtual List<Agendamento> Agendamentos { get; set; }
+
         [JsonIgnore]
         public virtual Cliente Cliente { get; set; }
 

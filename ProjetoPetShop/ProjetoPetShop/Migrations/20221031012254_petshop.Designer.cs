@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoPetShop.Data;
 
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    partial class PetContextModelSnapshot : ModelSnapshot
+    [Migration("20221031012254_petshop")]
+    partial class petshop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +101,6 @@ namespace ProjetoPetShop.Migrations
                     b.ToTable("Pets");
                 });
 
-
             modelBuilder.Entity("ProjetoPetShop.Model.Agendamento", b =>
                 {
                     b.HasOne("ProjetoPetShop.Model.Pet", "Pet")
@@ -108,7 +109,6 @@ namespace ProjetoPetShop.Migrations
 
                     b.Navigation("Pet");
                 });
-
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
                 {
@@ -128,7 +128,6 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.Navigation("Agendamentos");
                 });
-
 #pragma warning restore 612, 618
         }
     }
