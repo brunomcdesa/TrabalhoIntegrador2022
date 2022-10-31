@@ -1,8 +1,24 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Class1
+namespace ProjetoPetShop.Model
 {
-	public Class1()
-	{
-	}
+    public class Servico
+    {
+        [Key]
+        public int IdServico { get; set; }
+        [Required]
+        public string TipoServico { get; set; }
+        public double Valor { get; set; }
+
+        public Servico (int idServico, string tipoServico, double valor)
+        {
+            this.IdServico = idServico;
+            this.TipoServico = tipoServico;
+            this.Valor = valor;
+        }
+        public Servico()
+        {
+
+        }
+    }
 }

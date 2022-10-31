@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetoPetShop.Model;
 
 namespace ProjetoPetShop.Data
 {
     public class PetContext : DbContext
     {
-        public PetContext(DbContextOptions<PetContext> opt) : base(opt)
+        public DbSet<Servico> Servicos { get; set; }
+        public PetContext(DbContextOptions<PetContext> opt) : base(opt) 
         {
 
         }
+       
     }
 }
