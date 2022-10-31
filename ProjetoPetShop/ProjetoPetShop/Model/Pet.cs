@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Text.Json.Serialization;
 
 namespace ProjetoPetShop.Model
 {
@@ -18,9 +19,12 @@ namespace ProjetoPetShop.Model
         [Required]
         public string Especie { get; set; }
 
-       // [ForeignKey("Cliente")]
-       // public int IdCliente { get; set; }
-        public Cliente cliente { get; set; }
+        // [ForeignKey("Cliente")]
+        // public int IdCliente { get; set; }
+        [Required]
+        public int IdCliente { get; set; }
+        [JsonIgnore]
+        public virtual Cliente Cliente { get; set; }
 
 
     }

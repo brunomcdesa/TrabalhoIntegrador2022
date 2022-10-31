@@ -23,7 +23,19 @@ namespace ProjetoPetShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("nomeCliente")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -38,12 +50,18 @@ namespace ProjetoPetShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("ClienteIdCliente")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Deficiencia")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Especie")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("IdCliente")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Nascimento")
                         .HasColumnType("datetime");
@@ -52,23 +70,25 @@ namespace ProjetoPetShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("clienteIdCliente")
-                        .HasColumnType("int");
-
                     b.HasKey("IdPet");
 
-                    b.HasIndex("clienteIdCliente");
+                    b.HasIndex("ClienteIdCliente");
 
                     b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
                 {
-                    b.HasOne("ProjetoPetShop.Model.Cliente", "cliente")
-                        .WithMany()
-                        .HasForeignKey("clienteIdCliente");
+                    b.HasOne("ProjetoPetShop.Model.Cliente", "Cliente")
+                        .WithMany("Pets")
+                        .HasForeignKey("ClienteIdCliente");
 
-                    b.Navigation("cliente");
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
+                {
+                    b.Navigation("Pets");
                 });
 #pragma warning restore 612, 618
         }
