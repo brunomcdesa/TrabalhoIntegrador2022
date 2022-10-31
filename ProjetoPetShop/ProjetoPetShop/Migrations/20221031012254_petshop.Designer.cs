@@ -9,8 +9,8 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221030233034_petShop")]
-    partial class petShop
+    [Migration("20221031012254_petshop")]
+    partial class petshop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,7 +47,19 @@ namespace ProjetoPetShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("nomeCliente")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -60,6 +72,9 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.Property<int>("IdPet")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClienteIdCliente")
                         .HasColumnType("int");
 
                     b.Property<bool>("Deficiencia")
@@ -81,6 +96,8 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdPet");
 
+                    b.HasIndex("ClienteIdCliente");
+
                     b.ToTable("Pets");
                 });
 
@@ -91,6 +108,20 @@ namespace ProjetoPetShop.Migrations
                         .HasForeignKey("PetIdPet");
 
                     b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
+                {
+                    b.HasOne("ProjetoPetShop.Model.Cliente", "Cliente")
+                        .WithMany("Pets")
+                        .HasForeignKey("ClienteIdCliente");
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
+                {
+                    b.Navigation("Pets");
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>

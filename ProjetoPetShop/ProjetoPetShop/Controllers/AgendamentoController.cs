@@ -38,9 +38,7 @@ namespace ProjetoPetShop.Controllers
 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
-        {
-            //Agendamento agendamento = _context.Agendamentos.FirstOrDefault(agendamento => agendamento.IdAgendamento == id );
-            
+        {          
             var query = _context.Agendamentos   
             .Join(_context.Pets, 
                 agendamento => agendamento.IdPet,       
@@ -50,7 +48,6 @@ namespace ProjetoPetShop.Controllers
 
             if (query != null)
             {
-
                 return Ok(query);
             }
             return NotFound("Não existe");

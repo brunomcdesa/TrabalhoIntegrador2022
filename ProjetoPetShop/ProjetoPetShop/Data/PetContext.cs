@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ProjetoPetShop.Model;
+using System.Collections.Generic;
 
 namespace ProjetoPetShop.Data
 {
@@ -14,12 +15,13 @@ namespace ProjetoPetShop.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Agendamento>()
-                // aqui ta fazendo a relação só de um lado , onde tem 1 pet para 1 agendamento
                 .HasOne(p => p.Pet)
                 .WithMany(pet => pet.Agendamentos);
-                //.HasForeignKey<Agendamento>(p => p.IdPet);
-                // não precisa disso: .HasConstraintName("ForeignKey_Agendamento_Pet");
+            modelBuilder.Entity<Pet>()
+                .HasOne(c => c.Cliente)
+                .WithMany(cliente => cliente.Pets);
         }
+
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
