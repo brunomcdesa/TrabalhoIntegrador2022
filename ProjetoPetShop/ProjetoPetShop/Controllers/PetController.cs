@@ -35,11 +35,8 @@ namespace ProjetoPetShop.Controllers
             {
                 return NotFound("Pet não encontrado!");
             }
-
-            return Ok(pet);
-
+                    return Ok(pet);    
         }
-
 
         [HttpPost]
         public IActionResult addPet([FromBody] Pet pet)
@@ -47,20 +44,20 @@ namespace ProjetoPetShop.Controllers
             _context.Pets.Add(pet);
             _context.SaveChanges();
             return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.IdPet }, pet);
-
         }
+
 
         [HttpDelete("{id}")]
         public string RemovePetPorId(int id)
         {
-            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
-            if (pet != null)
-            {
-                _context.Pets.Remove(pet);
-                _context.SaveChanges();
-                return "Pet excluido com sucesso!";
-            }
-            return "Pet não encontrado";
+                Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
+                if (pet != null)
+                {
+                    _context.Pets.Remove(pet);
+                    _context.SaveChanges();
+                    return "Pet excluido com sucesso!";
+                }
+                return "Pet não encontrado";
         }
 
 
@@ -75,13 +72,12 @@ namespace ProjetoPetShop.Controllers
 
             _context.Entry(petN).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-            try
-            {
+            try { 
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (petN == null)
+                if(petN == null)
                 {
                     return NotFound("Id não encontrado!");
                 }
@@ -92,6 +88,5 @@ namespace ProjetoPetShop.Controllers
             }
             return NoContent();
         }
-
     }
 }
