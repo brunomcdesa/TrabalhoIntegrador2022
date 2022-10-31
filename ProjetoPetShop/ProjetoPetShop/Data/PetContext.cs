@@ -11,14 +11,6 @@ namespace ProjetoPetShop.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Pet>()
-            .HasOne(c => c.Cliente)
-            .WithMany(cliente => cliente.Pets);
-            //.HasForeignKey<Pet>(c => c.IdCliente);
-        
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Agendamento>()
