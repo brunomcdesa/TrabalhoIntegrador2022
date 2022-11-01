@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ProjetoPetShop.Model
 {
@@ -15,5 +17,8 @@ namespace ProjetoPetShop.Model
         public string Endereco { get; set; }
         [Required]
         public string Telefone { get; set; }
+
+        [JsonIgnore]
+        public virtual List<Pet> Pets { get; set; }
     }
 }

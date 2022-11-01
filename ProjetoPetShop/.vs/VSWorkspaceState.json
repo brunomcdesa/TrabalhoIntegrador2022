@@ -3,8 +3,9 @@
     "",
     "\\ProjetoPetShop",
     "\\ProjetoPetShop\\Controllers",
+    "\\ProjetoPetShop\\Data",
     "\\ProjetoPetShop\\Model"
   ],
-  "SelectedNode": "\\ProjetoPetShop\\Controllers\\ClienteControllers.cs",
+  "SelectedNode": "\\ProjetoPetShop.sln",
   "PreviewInSolutionExplorer": false
 }
