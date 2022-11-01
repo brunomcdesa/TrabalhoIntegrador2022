@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoPetShop.Model
 {
@@ -9,16 +11,8 @@ namespace ProjetoPetShop.Model
         [Required]
         public string TipoServico { get; set; }
         public double Valor { get; set; }
-
-        public Servico (int idServico, string tipoServico, double valor)
-        {
-            this.IdServico = idServico;
-            this.TipoServico = tipoServico;
-            this.Valor = valor;
-        }
-        public Servico()
-        {
-
-        }
+        [JsonIgnore]
+        public virtual List <Pet> Pets { get; set; }
+       
     }
 }
