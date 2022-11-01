@@ -17,6 +17,23 @@ namespace ProjetoPetShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
 
+            modelBuilder.Entity("ProjetoPetShop.Model.Servico", b =>
+                {
+                    b.Property<int>("IdServico")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoServico")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("double");
+
+                    b.HasKey("IdServico");
+
+                    b.ToTable("Servicos");
+                });
             modelBuilder.Entity("ProjetoPetShop.Model.Agendamento", b =>
                 {
                     b.Property<int>("IdAgendamento")
