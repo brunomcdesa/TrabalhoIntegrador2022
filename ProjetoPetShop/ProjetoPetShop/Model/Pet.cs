@@ -28,7 +28,5 @@ namespace ProjetoPetShop.Model
 
         [JsonIgnore]
         public virtual Cliente Cliente { get; set; }
-
-
     }
 }

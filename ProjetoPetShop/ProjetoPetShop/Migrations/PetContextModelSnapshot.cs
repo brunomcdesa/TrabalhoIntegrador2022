@@ -16,7 +16,7 @@ namespace ProjetoPetShop.Migrations
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
-
+                
             modelBuilder.Entity("ProjetoPetShop.Model.Servico", b =>
                 {
                     b.Property<int>("IdServico")
@@ -55,7 +55,6 @@ namespace ProjetoPetShop.Migrations
 
                     b.ToTable("Agendamentos");
                 });
-
             modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
                 {
                     b.Property<int>("IdCliente")
@@ -80,6 +79,8 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdCliente");
 
+                    b.ToTable("Cliente");
+                });
                     b.ToTable("Clientes");
                 });
 
@@ -145,7 +146,6 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.Navigation("Agendamentos");
                 });
-
 #pragma warning restore 612, 618
         }
     }
