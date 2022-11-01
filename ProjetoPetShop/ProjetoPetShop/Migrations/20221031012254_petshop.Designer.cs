@@ -2,38 +2,23 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoPetShop.Data;
 
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    partial class PetContextModelSnapshot : ModelSnapshot
+    [Migration("20221031012254_petshop")]
+    partial class petshop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
-                
-            modelBuilder.Entity("ProjetoPetShop.Model.Servico", b =>
-                {
-                    b.Property<int>("IdServico")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
 
-                    b.Property<string>("TipoServico")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("Valor")
-                        .HasColumnType("double");
-
-                    b.HasKey("IdServico");
-
-                    b.ToTable("Servicos");
-                });
             modelBuilder.Entity("ProjetoPetShop.Model.Agendamento", b =>
                 {
                     b.Property<int>("IdAgendamento")
@@ -55,6 +40,7 @@ namespace ProjetoPetShop.Migrations
 
                     b.ToTable("Agendamentos");
                 });
+
             modelBuilder.Entity("ProjetoPetShop.Model.Cliente", b =>
                 {
                     b.Property<int>("IdCliente")
@@ -79,8 +65,6 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdCliente");
 
-                    b.ToTable("Cliente");
-                });
                     b.ToTable("Clientes");
                 });
 
@@ -117,7 +101,6 @@ namespace ProjetoPetShop.Migrations
                     b.ToTable("Pets");
                 });
 
-
             modelBuilder.Entity("ProjetoPetShop.Model.Agendamento", b =>
                 {
                     b.HasOne("ProjetoPetShop.Model.Pet", "Pet")
@@ -126,7 +109,6 @@ namespace ProjetoPetShop.Migrations
 
                     b.Navigation("Pet");
                 });
-
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
                 {

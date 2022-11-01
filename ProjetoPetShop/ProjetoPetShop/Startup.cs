@@ -28,7 +28,7 @@ namespace ProjetoPetShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PetContext>(opts => opts.UseMySQL(Configuration.GetConnectionString("PetConnection")));
+            services.AddDbContext<PetContext>(opts => opts.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("PetConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
