@@ -20,18 +20,13 @@ namespace ProjetoPetShop.Model
         [Required]
         public string Especie { get; set; }
 
-        // [ForeignKey("Cliente")]
-        // public int IdCliente { get; set; }
         [Required]
         public int IdCliente { get; set; }
-
 
         [JsonIgnore]
         public virtual List<Agendamento> Agendamentos { get; set; }
 
         [JsonIgnore]
         public virtual Cliente Cliente { get; set; }
-
-
     }
 }
