@@ -22,14 +22,14 @@ namespace ProjetoPetShop.Controllers
         [HttpGet]
         public IEnumerable<Cliente> PetContexts()
         {
-            return _context.Cliente;
+            return _context.Clientes;
         }
 
 
         [HttpGet("{id}")]
             public IActionResult GetClienteById(int id)
             {
-                Cliente cliente = _context.Cliente.FirstOrDefault(cliente => cliente.IdCliente == id);
+                Cliente cliente = _context.Clientes.FirstOrDefault(cliente => cliente.IdCliente == id);
                 if (cliente != null)
                 {
                     return Ok(cliente);
@@ -41,7 +41,7 @@ namespace ProjetoPetShop.Controllers
             [HttpPost]
             public IActionResult PostCliente([FromBody] Cliente cliente)
             {
-                _context.Cliente.Add(cliente);
+                _context.Clientes.Add(cliente);
                 _context.SaveChanges();
                 return CreatedAtAction(nameof(GetClienteById), new { Id = cliente.IdCliente }, cliente);
             }
@@ -49,10 +49,10 @@ namespace ProjetoPetShop.Controllers
         [HttpDelete("{id}")]
         public string DeleteClientePorId(int id)
         {
-            Cliente cliente = _context.Cliente.FirstOrDefault(cliente => cliente.IdCliente == id);
+            Cliente cliente = _context.Clientes.FirstOrDefault(cliente => cliente.IdCliente == id);
             if(cliente != null)
             {
-                _context.Cliente.Remove(cliente);
+                _context.Clientes.Remove(cliente);
                 _context.SaveChanges();
                 return "Cliente excluido!";
             }

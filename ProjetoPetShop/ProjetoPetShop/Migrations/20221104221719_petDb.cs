@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace ProjetoPetShop.Migrations
 {
-    public partial class petshop : Migration
+    public partial class petDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,20 @@ namespace ProjetoPetShop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clientes", x => x.IdCliente);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Servicos",
+                columns: table => new
+                {
+                    IdServico = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    TipoServico = table.Column<string>(type: "text", nullable: false),
+                    Valor = table.Column<double>(type: "double", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Servicos", x => x.IdServico);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,7 +70,9 @@ namespace ProjetoPetShop.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(type: "datetime", nullable: false),
                     IdPet = table.Column<int>(type: "int", nullable: false),
-                    PetIdPet = table.Column<int>(type: "int", nullable: true)
+                    PetIdPet = table.Column<int>(type: "int", nullable: true),
+                    IdServico = table.Column<int>(type: "int", nullable: false),
+                    ServicoIdServico = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,12 +83,23 @@ namespace ProjetoPetShop.Migrations
                         principalTable: "Pets",
                         principalColumn: "IdPet",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Agendamentos_Servicos_ServicoIdServico",
+                        column: x => x.ServicoIdServico,
+                        principalTable: "Servicos",
+                        principalColumn: "IdServico",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agendamentos_PetIdPet",
                 table: "Agendamentos",
                 column: "PetIdPet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Agendamentos_ServicoIdServico",
+                table: "Agendamentos",
+                column: "ServicoIdServico");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pets_ClienteIdCliente",
@@ -87,6 +114,9 @@ namespace ProjetoPetShop.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pets");
+
+            migrationBuilder.DropTable(
+                name: "Servicos");
 
             migrationBuilder.DropTable(
                 name: "Clientes");

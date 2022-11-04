@@ -9,12 +9,18 @@ namespace ProjetoPetShop.Data
     {
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Agendamento> Agendamentos { get; set; }
+
         public PetContext(DbContextOptions<PetContext> opt) : base(opt)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Agendamento>()
+                .HasOne(c => c.Servico)
+                .WithMany(servico => servico.Agendamentos);
             modelBuilder.Entity<Agendamento>()
                 .HasOne(p => p.Pet)
                 .WithMany(pet => pet.Agendamentos);
@@ -23,7 +29,6 @@ namespace ProjetoPetShop.Data
                 .WithMany(cliente => cliente.Pets);
         }
 
-        public DbSet<Pet> Pets { get; set; }
-        public DbSet<Agendamento> Agendamentos { get; set; }
+     
     }
 }

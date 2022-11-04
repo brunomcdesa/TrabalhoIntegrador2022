@@ -27,20 +27,53 @@ namespace ProjetoPetShop.Controllers
 
 
         //GET
-        [HttpGet("{id}")]
+        [HttpGet("/Pet/id/{id}")]
         public IActionResult BuscarPetPorId(int id)
         {
-            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
-            if (pet == null)
+            var query = _context.Pets
+            .Join(_context.Clientes,
+                pet => pet.IdCliente,
+                cliente => cliente.IdCliente,
+                (pet, cliente) => new { Pet = pet, cliente.Nome, cliente.Cpf, cliente.Telefone, cliente.Endereco })
+            .Where(petECliente => petECliente.Pet.IdPet == id);
+
+          
+            if (query == null)
             {
                 return NotFound("Pet não encontrado!");
             }
-                    return Ok(pet);    
+                    return Ok(query);    
         }
+
+        [HttpGet("/Pet/nome/{nome}")]
+        public IActionResult BuscarPetPorNome(string nome)
+        {
+            var query = _context.Pets
+           .Join(_context.Clientes,
+               pet => pet.IdCliente,
+               cliente => cliente.IdCliente,
+               (pet, cliente) => new { Pet = pet, cliente.Nome, cliente.Cpf, cliente.Telefone, cliente.Endereco })
+           .Where(petECliente => petECliente.Pet.NomePet == nome);
+           
+            if (query == null)
+            {
+                return NotFound("Pet não encontrado!");
+            }
+            return Ok(query);
+        }
+
 
         [HttpPost]
         public IActionResult addPet([FromBody] Pet pet)
         {
+            //  Preciso saber como faz pra pegar o cliente que esta na tabela de clientes e adicionar em pet
+            //  de acordo com o id do cliente passado no corpo do post
+
+
+            //foreach(Cliente cliente in _context.Clientes) { 
+            //}
+   
+
             _context.Pets.Add(pet);
             _context.SaveChanges();
             return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.IdPet }, pet);

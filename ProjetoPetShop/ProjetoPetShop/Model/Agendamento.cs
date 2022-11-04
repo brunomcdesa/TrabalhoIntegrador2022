@@ -10,12 +10,16 @@ namespace ProjetoPetShop.Model
     {
         [Key]
         public int IdAgendamento { get; set; }
+        [Required]
         public DateTime Data { get; set; }
-
+        [Required]
         public int IdPet { get; set; }
-  
         [JsonIgnore]
         public virtual Pet Pet { get; set; }
+        public int IdServico { get; set; }
+        [JsonIgnore]
+        public virtual Servico Servico { get; set; }
+        
         
     }
 }
