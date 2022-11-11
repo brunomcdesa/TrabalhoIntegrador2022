@@ -30,36 +30,26 @@ namespace ProjetoPetShop.Controllers
         [HttpGet("/Pet/id/{id}")]
         public IActionResult BuscarPetPorId(int id)
         {
-            var query = _context.Pets
-            .Join(_context.Clientes,
-                pet => pet.IdCliente,
-                cliente => cliente.IdCliente,
-                (pet, cliente) => new { Pet = pet, cliente.Cpf, cliente.Telefone, })
-            .Where(petECliente => petECliente.Pet.IdPet == id);
-
           
-            if (query == null)
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
+          
+            if (pet == null)
             {
                 return NotFound("Pet não encontrado!");
             }
-                    return Ok(query);    
+                    return Ok(pet);    
         }
 
         [HttpGet("/Pet/nome/{nome}")]
         public IActionResult BuscarPetPorNome(string nome)
         {
-            var query = _context.Pets
-           .Join(_context.Clientes,
-               pet => pet.IdCliente,
-               cliente => cliente.IdCliente,
-               (pet, cliente) => new { Pet = pet, cliente.Nome, cliente.Cpf, cliente.Telefone, cliente.Endereco })
-           .Where(petECliente => petECliente.Pet.NomePet == nome);
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.NomePet == nome);
            
-            if (query == null)
+            if (pet == null)
             {
                 return NotFound("Pet não encontrado!");
             }
-            return Ok(query);
+            return Ok(pet);
         }
 
 
