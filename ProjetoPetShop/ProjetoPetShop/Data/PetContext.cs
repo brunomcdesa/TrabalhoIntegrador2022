@@ -20,13 +20,18 @@ namespace ProjetoPetShop.Data
         {
             modelBuilder.Entity<Agendamento>()
                 .HasOne(c => c.Servico)
-                .WithMany(servico => servico.Agendamentos);
+                .WithMany(servico => servico.Agendamentos)
+                .HasForeignKey(fk => fk.IdServico);
+
             modelBuilder.Entity<Agendamento>()
                 .HasOne(p => p.Pet)
-                .WithMany(pet => pet.Agendamentos);
+                .WithMany(pet => pet.Agendamentos)
+                .HasForeignKey(fk => fk.IdPet);
+
             modelBuilder.Entity<Pet>()
                 .HasOne(c => c.Cliente)
-                .WithMany(cliente => cliente.Pets);
+                .WithMany(cliente => cliente.Pets)
+                .HasForeignKey(fk => fk.IdCliente);
         }
 
      

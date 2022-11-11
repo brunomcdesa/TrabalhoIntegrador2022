@@ -34,7 +34,7 @@ namespace ProjetoPetShop.Controllers
             .Join(_context.Clientes,
                 pet => pet.IdCliente,
                 cliente => cliente.IdCliente,
-                (pet, cliente) => new { Pet = pet, cliente.Nome, cliente.Cpf, cliente.Telefone, cliente.Endereco })
+                (pet, cliente) => new { Pet = pet, cliente.Cpf, cliente.Telefone, })
             .Where(petECliente => petECliente.Pet.IdPet == id);
 
           
@@ -66,14 +66,6 @@ namespace ProjetoPetShop.Controllers
         [HttpPost]
         public IActionResult addPet([FromBody] Pet pet)
         {
-            //  Preciso saber como faz pra pegar o cliente que esta na tabela de clientes e adicionar em pet
-            //  de acordo com o id do cliente passado no corpo do post
-
-
-            //foreach(Cliente cliente in _context.Clientes) { 
-            //}
-   
-
             _context.Pets.Add(pet);
             _context.SaveChanges();
             return CreatedAtAction(nameof(BuscarPetPorId), new { Id = pet.IdPet }, pet);

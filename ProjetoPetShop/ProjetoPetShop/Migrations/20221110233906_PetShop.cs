@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace ProjetoPetShop.Migrations
 {
-    public partial class petDb : Migration
+    public partial class PetShop : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,18 +48,17 @@ namespace ProjetoPetShop.Migrations
                     Nascimento = table.Column<DateTime>(type: "datetime", nullable: false),
                     Deficiencia = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Especie = table.Column<string>(type: "text", nullable: false),
-                    IdCliente = table.Column<int>(type: "int", nullable: false),
-                    ClienteIdCliente = table.Column<int>(type: "int", nullable: true)
+                    IdCliente = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pets", x => x.IdPet);
                     table.ForeignKey(
-                        name: "FK_Pets_Clientes_ClienteIdCliente",
-                        column: x => x.ClienteIdCliente,
+                        name: "FK_Pets_Clientes_IdCliente",
+                        column: x => x.IdCliente,
                         principalTable: "Clientes",
                         principalColumn: "IdCliente",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,41 +69,39 @@ namespace ProjetoPetShop.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(type: "datetime", nullable: false),
                     IdPet = table.Column<int>(type: "int", nullable: false),
-                    PetIdPet = table.Column<int>(type: "int", nullable: true),
-                    IdServico = table.Column<int>(type: "int", nullable: false),
-                    ServicoIdServico = table.Column<int>(type: "int", nullable: true)
+                    IdServico = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Agendamentos", x => x.IdAgendamento);
                     table.ForeignKey(
-                        name: "FK_Agendamentos_Pets_PetIdPet",
-                        column: x => x.PetIdPet,
+                        name: "FK_Agendamentos_Pets_IdPet",
+                        column: x => x.IdPet,
                         principalTable: "Pets",
                         principalColumn: "IdPet",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Agendamentos_Servicos_ServicoIdServico",
-                        column: x => x.ServicoIdServico,
+                        name: "FK_Agendamentos_Servicos_IdServico",
+                        column: x => x.IdServico,
                         principalTable: "Servicos",
                         principalColumn: "IdServico",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agendamentos_PetIdPet",
+                name: "IX_Agendamentos_IdPet",
                 table: "Agendamentos",
-                column: "PetIdPet");
+                column: "IdPet");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Agendamentos_ServicoIdServico",
+                name: "IX_Agendamentos_IdServico",
                 table: "Agendamentos",
-                column: "ServicoIdServico");
+                column: "IdServico");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_ClienteIdCliente",
+                name: "IX_Pets_IdCliente",
                 table: "Pets",
-                column: "ClienteIdCliente");
+                column: "IdCliente");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

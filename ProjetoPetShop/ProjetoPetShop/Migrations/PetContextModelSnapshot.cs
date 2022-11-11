@@ -32,17 +32,11 @@ namespace ProjetoPetShop.Migrations
                     b.Property<int>("IdServico")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PetIdPet")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ServicoIdServico")
-                        .HasColumnType("int");
-
                     b.HasKey("IdAgendamento");
 
-                    b.HasIndex("PetIdPet");
+                    b.HasIndex("IdPet");
 
-                    b.HasIndex("ServicoIdServico");
+                    b.HasIndex("IdServico");
 
                     b.ToTable("Agendamentos");
                 });
@@ -80,9 +74,6 @@ namespace ProjetoPetShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteIdCliente")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Deficiencia")
                         .HasColumnType("tinyint(1)");
 
@@ -102,7 +93,7 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdPet");
 
-                    b.HasIndex("ClienteIdCliente");
+                    b.HasIndex("IdCliente");
 
                     b.ToTable("Pets");
                 });
@@ -129,11 +120,15 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.HasOne("ProjetoPetShop.Model.Pet", "Pet")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("PetIdPet");
+                        .HasForeignKey("IdPet")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ProjetoPetShop.Model.Servico", "Servico")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("ServicoIdServico");
+                        .HasForeignKey("IdServico")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Pet");
 
@@ -144,7 +139,9 @@ namespace ProjetoPetShop.Migrations
                 {
                     b.HasOne("ProjetoPetShop.Model.Cliente", "Cliente")
                         .WithMany("Pets")
-                        .HasForeignKey("ClienteIdCliente");
+                        .HasForeignKey("IdCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
