@@ -27,16 +27,31 @@ namespace ProjetoPetShop.Controllers
 
 
         //GET
-        [HttpGet("{id}")]
+        [HttpGet("/Pet/id/{id}")]
         public IActionResult BuscarPetPorId(int id)
         {
+          
             Pet pet = _context.Pets.FirstOrDefault(pet => pet.IdPet == id);
+          
             if (pet == null)
             {
                 return NotFound("Pet não encontrado!");
             }
                     return Ok(pet);    
         }
+
+        [HttpGet("/Pet/nome/{nome}")]
+        public IActionResult BuscarPetPorNome(string nome)
+        {
+            Pet pet = _context.Pets.FirstOrDefault(pet => pet.NomePet == nome);
+           
+            if (pet == null)
+            {
+                return NotFound("Pet não encontrado!");
+            }
+            return Ok(pet);
+        }
+
 
         [HttpPost]
         public IActionResult addPet([FromBody] Pet pet)
