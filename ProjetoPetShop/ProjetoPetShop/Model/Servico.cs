@@ -14,15 +14,9 @@ namespace ProjetoPetShop.Model
         [JsonIgnore]
         public  virtual List<Agendamento> Agendamentos { get; set; }
 
-        public Servico (int idServico, string tipoServico, double valor)
-        {
-            this.IdServico = idServico;
-            this.TipoServico = tipoServico;
-            this.Valor = valor;
-        }
-        public Servico()
-        {
+        [JsonIgnore]
+        public virtual List<Agendamento> Agendamentos { get; set; }
 
-        }
+
     }
 }

@@ -12,6 +12,7 @@ namespace ProjetoPetShop.Data
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
 
+
         public PetContext(DbContextOptions<PetContext> opt) : base(opt)
         {
         }
@@ -28,12 +29,19 @@ namespace ProjetoPetShop.Data
                 .WithMany(pet => pet.Agendamentos)
                 .HasForeignKey(fk => fk.IdPet);
 
+
+            modelBuilder.Entity<Agendamento>()
+                .HasOne(s => s.Servico)
+                .WithMany(servico => servico.Agendamentos)
+                .HasForeignKey(fk => fk.IdServico);
+
+
+
             modelBuilder.Entity<Pet>()
                 .HasOne(c => c.Cliente)
                 .WithMany(cliente => cliente.Pets)
                 .HasForeignKey(fk => fk.IdCliente);
         }
-
-     
+   
     }
 }
