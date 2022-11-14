@@ -11,6 +11,8 @@ namespace ProjetoPetShop.Model
         [Required]
         public string TipoServico { get; set; }
         public double Valor { get; set; }
+        [JsonIgnore]
+        public  virtual List<Agendamento> Agendamentos { get; set; }
 
         [JsonIgnore]
         public virtual List<Agendamento> Agendamentos { get; set; }

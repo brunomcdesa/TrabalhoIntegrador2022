@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,10 +10,13 @@ namespace ProjetoPetShop.Model
     {
         [Key]
         public int IdAgendamento { get; set; }
+        
+        [Required]
         public DateTime Data { get; set; }
-
+        
+        [Required]
         public int IdPet { get; set; }
-  
+
         [JsonIgnore]
         public virtual Pet Pet { get; set; }
 
@@ -21,6 +24,6 @@ namespace ProjetoPetShop.Model
 
         [JsonIgnore]
         public virtual Servico Servico { get; set; }
-
+        
     }
 }
