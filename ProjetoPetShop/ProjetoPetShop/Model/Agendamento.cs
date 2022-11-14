@@ -16,6 +16,11 @@ namespace ProjetoPetShop.Model
   
         [JsonIgnore]
         public virtual Pet Pet { get; set; }
-        
+
+        public int IdServico { get; set; }
+
+        [JsonIgnore]
+        public virtual Servico Servico { get; set; }
+
     }
 }
