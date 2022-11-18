@@ -9,8 +9,8 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221031012254_petshop")]
-    partial class petshop
+    [Migration("20221110233906_PetShop")]
+    partial class PetShop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,14 @@ namespace ProjetoPetShop.Migrations
                     b.Property<int>("IdPet")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PetIdPet")
+                    b.Property<int>("IdServico")
                         .HasColumnType("int");
 
                     b.HasKey("IdAgendamento");
 
-                    b.HasIndex("PetIdPet");
+                    b.HasIndex("IdPet");
+
+                    b.HasIndex("IdServico");
 
                     b.ToTable("Agendamentos");
                 });
@@ -74,9 +76,6 @@ namespace ProjetoPetShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteIdCliente")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Deficiencia")
                         .HasColumnType("tinyint(1)");
 
@@ -96,25 +95,55 @@ namespace ProjetoPetShop.Migrations
 
                     b.HasKey("IdPet");
 
-                    b.HasIndex("ClienteIdCliente");
+                    b.HasIndex("IdCliente");
 
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Servico", b =>
+                {
+                    b.Property<int>("IdServico")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoServico")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("double");
+
+                    b.HasKey("IdServico");
+
+                    b.ToTable("Servicos");
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Agendamento", b =>
                 {
                     b.HasOne("ProjetoPetShop.Model.Pet", "Pet")
                         .WithMany("Agendamentos")
-                        .HasForeignKey("PetIdPet");
+                        .HasForeignKey("IdPet")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjetoPetShop.Model.Servico", "Servico")
+                        .WithMany("Agendamentos")
+                        .HasForeignKey("IdServico")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Pet");
+
+                    b.Navigation("Servico");
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
                 {
                     b.HasOne("ProjetoPetShop.Model.Cliente", "Cliente")
                         .WithMany("Pets")
-                        .HasForeignKey("ClienteIdCliente");
+                        .HasForeignKey("IdCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
@@ -125,6 +154,11 @@ namespace ProjetoPetShop.Migrations
                 });
 
             modelBuilder.Entity("ProjetoPetShop.Model.Pet", b =>
+                {
+                    b.Navigation("Agendamentos");
+                });
+
+            modelBuilder.Entity("ProjetoPetShop.Model.Servico", b =>
                 {
                     b.Navigation("Agendamentos");
                 });
