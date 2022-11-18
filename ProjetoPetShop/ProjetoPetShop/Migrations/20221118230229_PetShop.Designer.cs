@@ -9,8 +9,8 @@ using ProjetoPetShop.Data;
 namespace ProjetoPetShop.Migrations
 {
     [DbContext(typeof(PetContext))]
-    [Migration("20221110234118_petShop")]
-    partial class petShop
+    [Migration("20221118230229_PetShop")]
+    partial class PetShop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
