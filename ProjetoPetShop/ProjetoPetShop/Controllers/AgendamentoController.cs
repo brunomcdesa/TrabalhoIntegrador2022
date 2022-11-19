@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetoPetShop.Data;
 using ProjetoPetShop.Model;
@@ -25,6 +26,7 @@ namespace ProjetoPetShop.Controllers
         {
             _context.Agendamentos.Add(agendamento);
             _context.SaveChanges();
+            
             return CreatedAtAction(nameof(BuscarPorId), new { Id = agendamento.IdAgendamento }, agendamento);
         }
 
@@ -38,17 +40,12 @@ namespace ProjetoPetShop.Controllers
 
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
-        {          
-            var query = _context.Agendamentos   
-            .Join(_context.Pets, 
-                agendamento => agendamento.IdPet,       
-                pet => pet.IdPet, 
-                (agendamento, pet) => new { Agendamento = agendamento, pet.NomePet, pet.Deficiencia})
-            .Where(agendamentoEPet => agendamentoEPet.Agendamento.IdAgendamento == id);    
+       {          
+            Agendamento agendamento = _context.Agendamentos.FirstOrDefault(agendamento => agendamento.IdAgendamento == id);
 
-            if (query != null)
+            if (agendamento != null)
             {
-                return Ok(query);
+                return Ok(agendamento);
             }
             return NotFound("Não existe");
         }

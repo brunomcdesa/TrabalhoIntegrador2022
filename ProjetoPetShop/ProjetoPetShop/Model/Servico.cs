@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ProjetoPetShop.Model
 {
@@ -12,7 +12,11 @@ namespace ProjetoPetShop.Model
         public string TipoServico { get; set; }
         public double Valor { get; set; }
         [JsonIgnore]
-        public virtual List <Pet> Pets { get; set; }
-       
+        public  virtual List<Agendamento> Agendamentos { get; set; }
+
+        [JsonIgnore]
+        public virtual List<Agendamento> Agendamentos { get; set; }
+
+
     }
 }
