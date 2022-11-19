@@ -14,8 +14,7 @@ namespace ProjetoPetShop.Model
         [JsonIgnore]
         public  virtual List<Agendamento> Agendamentos { get; set; }
 
-        [JsonIgnore]
-        public virtual List<Agendamento> Agendamentos { get; set; }
+       
 
 
     }
